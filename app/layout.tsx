@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_JP, Zen_Kaku_Gothic_New } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { Providers } from './providers'
 
 const _notoSansJP = Noto_Sans_JP({ 
   subsets: ["latin"],
@@ -47,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${_notoSansJP.variable} ${_zenKaku.variable} font-sans antialiased`}>
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
       </body>
     </html>

@@ -1,34 +1,36 @@
-"use client"
+"use client";
 
-import { motion, useInView } from "framer-motion"
-import { useRef, useState } from "react"
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 
 export function MembersSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
 
   const members = [
     {
       id: "morimoto",
-      name: "森本晋太郎",
-      nameEn: "SHINTARO MORIMOTO",
-      role: "ツッコミ",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
-      color: "from-amber-500/20"
+      name: "森田哲矢",
+      nameEn: "TETSUYA MORTA",
+      image: "/assets/morita.jpg",
+      color: "from-amber-500/20",
     },
     {
       id: "higashi",
       name: "東ブクロ",
       nameEn: "HIGASHIBUKURO",
-      role: "ボケ",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop",
-      color: "from-blue-500/20"
-    }
-  ]
+      image: "/assets/higashibukuro.jpg",
+      color: "from-blue-500/20",
+    },
+  ];
 
   return (
-    <section ref={sectionRef} id="members" className="relative min-h-screen bg-card py-24 overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="members"
+      className="relative min-h-screen bg-card py-24 overflow-hidden"
+    >
       {/* Background Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.span
@@ -73,8 +75,8 @@ export function MembersSection() {
                 {/* Image */}
                 <motion.div
                   className="absolute inset-0"
-                  animate={{ 
-                    scale: hoveredMember === member.id ? 1.1 : 1 
+                  animate={{
+                    scale: hoveredMember === member.id ? 1.1 : 1,
                   }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -86,21 +88,23 @@ export function MembersSection() {
                 </motion.div>
 
                 {/* Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t ${member.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t ${member.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <motion.div
-                    animate={{ 
+                    animate={{
                       y: hoveredMember === member.id ? 0 : 10,
-                      opacity: hoveredMember === member.id ? 1 : 0.8
+                      opacity: hoveredMember === member.id ? 1 : 0.8,
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <span className="text-xs tracking-widest text-accent block mb-2">
+                    {/* <span className="text-xs tracking-widest text-accent block mb-2">
                       {member.role}
-                    </span>
+                    </span> */}
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
                       {member.name}
                     </h3>
@@ -113,17 +117,17 @@ export function MembersSection() {
                 {/* Corner Decorations */}
                 <motion.div
                   className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-foreground/20"
-                  animate={{ 
+                  animate={{
                     opacity: hoveredMember === member.id ? 1 : 0,
-                    scale: hoveredMember === member.id ? 1 : 0.8
+                    scale: hoveredMember === member.id ? 1 : 0.8,
                   }}
                   transition={{ duration: 0.3 }}
                 />
                 <motion.div
                   className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-foreground/20"
-                  animate={{ 
+                  animate={{
                     opacity: hoveredMember === member.id ? 1 : 0,
-                    scale: hoveredMember === member.id ? 1 : 0.8
+                    scale: hoveredMember === member.id ? 1 : 0.8,
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -132,9 +136,9 @@ export function MembersSection() {
               {/* Index Number */}
               <motion.span
                 className="absolute -top-8 -left-4 text-8xl font-black text-secondary"
-                animate={{ 
+                animate={{
                   opacity: hoveredMember === member.id ? 0.5 : 0.2,
-                  x: hoveredMember === member.id ? 10 : 0
+                  x: hoveredMember === member.id ? 10 : 0,
                 }}
                 transition={{ duration: 0.3 }}
               >
@@ -145,5 +149,5 @@ export function MembersSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

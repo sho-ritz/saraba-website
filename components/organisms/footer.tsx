@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function Footer() {
-  const footerRef = useRef<HTMLElement>(null)
-  const isInView = useInView(footerRef, { once: true, margin: "-50px" })
+  const footerRef = useRef<HTMLElement>(null);
+  const isInView = useInView(footerRef, { once: true, margin: "-50px" });
 
   const socialLinks = [
     { name: "Twitter", href: "#", icon: "X" },
     { name: "YouTube", href: "#", icon: "YT" },
     { name: "Instagram", href: "#", icon: "IG" },
     { name: "TikTok", href: "#", icon: "TK" },
-  ]
+  ];
 
   const footerLinks = [
     { label: "プライバシーポリシー", href: "#" },
     { label: "お問い合わせ", href: "#" },
     { label: "よしもとクリエイティブ・エージェンシー", href: "#" },
-  ]
+  ];
 
   return (
     <footer ref={footerRef} className="relative bg-card border-t border-border">
@@ -56,36 +56,6 @@ export function Footer() {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Newsletter */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:text-right"
-          >
-            <h4 className="text-lg font-bold text-foreground mb-4">
-              ニュースレター
-            </h4>
-            <p className="text-muted-foreground text-sm mb-4">
-              最新情報をメールでお届けします
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 md:justify-end">
-              <input
-                type="email"
-                placeholder="メールアドレス"
-                className="px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground transition-colors"
-              />
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-foreground text-background font-bold rounded-lg hover:bg-foreground/90 transition-colors"
-              >
-                登録
-              </motion.button>
-            </form>
           </motion.div>
         </div>
       </div>
@@ -135,5 +105,5 @@ export function Footer() {
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }
