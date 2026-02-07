@@ -166,16 +166,18 @@ export function JapanMapSection() {
             ))}
           </motion.div>
 
-          {/* Google Map */}
-          <MapContent
-            placeData={placeData}
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-            youtubeMeta={youtubeMeta}
-            setYoutubeMeta={setYoutubeMeta}
-            selectedPlace={selectedPlace}
-            openModal={openModal}
-          />
+          {/* Google Map - スマホでは確定高さを与えて黒画面化を防ぐ */}
+          <div className="h-[280px] w-full sm:h-[360px] lg:h-full">
+            <MapContent
+              placeData={placeData}
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              youtubeMeta={youtubeMeta}
+              setYoutubeMeta={setYoutubeMeta}
+              selectedPlace={selectedPlace}
+              openModal={openModal}
+            />
+          </div>
           <PlaceModal
             isOpen={isModalOpen}
             place={selectedPlace}
