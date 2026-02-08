@@ -22,7 +22,7 @@ export const PlaceModal = ({
 }: PlaceModalProps) => {
   return (
     <div
-      className={`absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
         isOpen ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       onClick={onClose}
